@@ -1,6 +1,5 @@
 #include "imgui.h"
 #include "imgui-SFML.h"
-#include "Render.hpp"
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
@@ -30,3 +29,5 @@ class Settings
 void ShowSettings(bool* isOpen);
 void Restart();
 void ShowMenuBar();
+void InitUI(sf::RenderWindow* window);
+void DrawUI(sf::RenderWindow* window);

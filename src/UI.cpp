@@ -9,6 +9,13 @@ bool verticalSync = true;
 bool isSettings = false;
 bool lastVSync = verticalSync;
 
+// SFML init
+sf::Font font("assets/JetBrainsMonoNerdFont-Medium.ttf");
+sf::Text FPS(font);
+sf::Clock deltaTimeClock;
+sf::Time deltaTime;
+sf::Clock delayClock;
+
 void Settings::Save(std::string fileName)
 {
     // Read the file
@@ -86,4 +93,56 @@ void ShowMenuBar()
         ImGui::EndMainMenuBar();
     }
     return;
+}
+
+void InitUI(sf::RenderWindow* window)
+{
+    window->setFramerateLimit(0);
+    if (verticalSync)
+        window->setVerticalSyncEnabled(true);
+    else
+        window->setVerticalSyncEnabled(false);
+
+    // ImGUI init
+    (void) ImGui::SFML::Init(*window);
+}
+
+void DrawUI(sf::RenderWindow* window)
+{
+    while (const auto event = window->pollEvent())
+    {
+        ImGui::SFML::ProcessEvent(*window, *event);
+        if (event->is<sf::Event::Closed>())
+            window->close();
+    }
+    window->clear();
+    deltaTime = deltaTimeClock.restart();
+    ImGui::SFML::Update(*window, deltaTime);
+
+    // Draw ImGUI GUI
+    ShowMenuBar();
+    if (isSettings) ShowSettings(&isSettings);
+
+    if (delayClock.getElapsedTime().asSeconds() > 0.5)
+    {
+        delayClock.restart();
+        
+        FPS.setString("FPS: " + std::to_string((int)(1 / deltaTime.asSeconds())));
+        if (lastVSync != verticalSync)
+        {
+            lastVSync = verticalSync;
+            if (verticalSync)
+                window->setVerticalSyncEnabled(true);
+            else
+                window->setVerticalSyncEnabled(false);        
+        }
+    }
+
+    // Draw FPS
+    FPS.setPosition({0, menuOffset * 1.f});
+    FPS.setCharacterSize(24);
+    window->draw(FPS);
+
+    ImGui::SFML::Render(*window);
+    window->display();
 }
