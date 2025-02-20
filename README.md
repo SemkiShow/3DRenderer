@@ -1,4 +1,4 @@
-# Snake
+# 3DRenderer
 
 ## How to try
 <!-- * Install Git, CMake and SFML 3.0.0+. Use your system's package manager if available. -->
