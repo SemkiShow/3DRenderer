@@ -14,18 +14,12 @@ int main()
     InitUI(&window);
 
     // Render init
-    Vector3 vectorOne(1, 1, 1);
-    Vector3 vectorTwo(2, 3, 4);
-    Vector3 vectorThree(0, 0, 0);
-  
     Object3D cube(new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(1, 1, 1));
+    cube.CreateCube();
     
     while (window.isOpen())
     {
         DrawUI(&window);
-        cube.CreateCube();
-        // vectorThree = vectorOne + vectorTwo;
-        // std::cout << vectorThree.value[0] << ", " << vectorThree.value[1] << ", " << vectorThree.value[2] << '\n';
     }
     
     settings.Save("settings.txt");

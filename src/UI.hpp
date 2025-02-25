@@ -1,6 +1,6 @@
 #include "imgui.h"
 #include "imgui-SFML.h"
-
+#include "Constants.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
@@ -11,9 +11,6 @@
 #include <algorithm>
 
 extern int menuOffset;
-extern unsigned int windowWidth;
-extern unsigned int windowHeight;
-extern unsigned int windowSize[2];
 extern bool verticalSync;
 
 extern bool isSettings;
