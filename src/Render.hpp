@@ -15,16 +15,22 @@ class Vector3
         double* operator-(Vector3& other);
         Vector3& operator+=(Vector3& other);
         Vector3& operator-=(Vector3& other);
+        double* operator+(Vector3* other);
+        double* operator-(Vector3* other);
+        Vector3& operator+=(Vector3* other);
+        Vector3& operator-=(Vector3* other);
 };
+
+Vector3& ValueToVector3(double* value);
 
 class Object3D
 {
     public:
-        Object3D(double positionX, double positionY, double positionZ, double rotationX, double rotationY, double rotationZ, double scaleX, double scaleY, double scaleZ);
+        Object3D(Vector3* _pos, Vector3* _rot, Vector3* _scl);
+        Vector3* position;
+        Vector3* rotation;
+        Vector3* scale;
         std::vector<Vector3> vertices;
         std::vector<int[2]> edges;
-        Vector3 position;
-        Vector3 rotation;
-        Vector3 scale;
         void CreateCube();
 };
