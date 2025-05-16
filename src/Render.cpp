@@ -58,5 +58,4 @@ void Object3D::CreateCube()
     tmpVector = *position;
     tmpVector.value[2] += scale->value[2];
     vertices.push_back(tmpVector);
-
 }

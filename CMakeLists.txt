@@ -43,7 +43,10 @@ option(IMGUI_SFML_IMGUI_DEMO "Build imgui_demo.cpp" OFF)
 
 FetchContent_MakeAvailable(imgui-sfml)
 
-add_executable(main src/main.cpp src/UI.cpp src/Render.cpp)
+file(GLOB SOURCES src/*.cpp)
+
+add_executable(main ${SOURCES})
+target_include_directories(main PRIVATE src/include/)
 target_compile_features(main PRIVATE cxx_std_17)
 target_link_libraries(main PRIVATE SFML::Graphics SFML::Audio)
 target_link_libraries(main PUBLIC ImGui-SFML::ImGui-SFML)

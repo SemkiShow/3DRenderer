@@ -1,5 +1,7 @@
+#include "imgui-SFML.h"
 #include "UI.hpp"
 #include "Render.hpp"
+#include "Settings.hpp"
 
 Settings settings;
 
@@ -10,7 +12,7 @@ int main()
     srand(time(0));
     settings.Load("settings.txt");
 
-    sf::RenderWindow window(sf::VideoMode({windowSize[0], windowSize[1]}), "3DRenderer");
+    sf::RenderWindow window(sf::VideoMode({windowSize[0], windowSize[1] + menuOffset}), "3DRenderer");
     InitUI(&window);
 
     // Render init

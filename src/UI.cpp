@@ -1,10 +1,8 @@
 #include "UI.hpp"
+#include "Settings.hpp"
 
 int menuOffset = 20;
-unsigned int windowWidth = 16*50*2;
-unsigned int windowHeight = 9*50*2;
-unsigned int windowSize[2] = {windowWidth - menuOffset, windowHeight + menuOffset};
-bool verticalSync = true;
+unsigned int windowSize[2] = {16*50*2, 9*50*2};
 
 bool isSettings = false;
 bool lastVSync = verticalSync;
@@ -15,31 +13,6 @@ sf::Text FPS(font);
 sf::Clock deltaTimeClock;
 sf::Time deltaTime;
 sf::Clock delayClock;
-
-void Settings::Save(std::string fileName)
-{
-    // Read the file
-    std::fstream settingsFile;
-    settingsFile.open(fileName, std::ios::out);
-    settingsFile << "vsync=" << (verticalSync ? "true" : "false") << '\n';
-    settingsFile.close();
-}
-
-void Settings::Load(std::string fileName)
-{
-    // Read the file
-    std::fstream settingsFile;
-    settingsFile.open(fileName, std::ios::in);
-    std::vector<std::string> settingsList;
-    std::string buf = "";
-    while (std::getline(settingsFile, buf))
-        settingsList.push_back(buf);
-    settingsFile.close();
-
-    // Process the file
-    verticalSync = settingsList[0].substr(6) == "true" ? true : false;
-}
-
 
 std::string* Split(std::string input, char delimiter = ' ')
 {
