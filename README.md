@@ -1,10 +1,12 @@
 # 3DRenderer
 
-## How to try
-<!-- * Install Git, CMake and SFML 3.0.0+. Use your system's package manager if available. -->
-* Download the latest release
-* Unzip it
-* Run main or main.exe depending on your system
+A 3D renderer made in C++/SFML
+
+## How to run
+
+1. Download the latest release
+1. Unzip it
+1. Run main or main.exe depending on your system
 
 ## How to build
 
@@ -27,8 +29,5 @@
 ```
 chmod +x compile.sh
 ./compile.sh
+./build/bin/main
 ```
-
-## License
-
-The source code is licensed under MIT.
