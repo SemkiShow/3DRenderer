@@ -1,14 +1,5 @@
-commit.sh
-backup.sh
-main.exe
 build*/
 debug/
-out
-.cache
-.idea
-.vs
 .vscode
-*.zip
-release/
 imgui.ini
 settings.txt
