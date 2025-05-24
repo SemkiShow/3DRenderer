@@ -27,7 +27,6 @@ A 3D renderer made in C++/SFML
     ```
 1. Run 
 ```
-chmod +x compile.sh
-./compile.sh
-./build/bin/main
+chmod +x run.sh
+./run.sh
 ```
